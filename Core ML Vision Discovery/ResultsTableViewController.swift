@@ -16,7 +16,6 @@ class ResultsTableViewController: UITableViewController {
     }
 
     var classificationLabel = ""
-    var damage = ""
     var discoveryResult = ""
     var discoveryResultTitle = ""
     var discoveryResultSubtitle = ""
@@ -57,7 +56,6 @@ class ResultsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellClassification", for: indexPath) as! ResultTableClassificationViewCell
             cell.label.text = classificationLabel
             cell.swipeLabel.text = "Swipe up for more information ↑"
-            cell.damageLabel.text = damage
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellDiscovery", for: indexPath) as! ResultTableDiscoveryViewCell

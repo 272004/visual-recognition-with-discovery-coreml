@@ -26,8 +26,11 @@ class ImageClassificationViewController: UIViewController {
     let discoveryEnvironmentID = ""
     let discoveryCollectionID = ""
     let version = "2017-11-10"
+    
     var visualRecognition: VisualRecognition!
     var discovery: Discovery!
+    
+    var classifications: [VisualRecognitionV3.Classification] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,44 +72,33 @@ class ImageClassificationViewController: UIViewController {
         }
     }
     
-    // Parse  cable classification information. Check whether there is any indication of damage
-    func sortClassifications(data: [VisualRecognitionV3.Classification]) -> [String: String] {
-        var label = ""
-        var damage = ""
-        label = data[0].classification
-        for classification in data {
-            let unparsedLabel = classification.classification
-            if unparsedLabel.contains("_male") || unparsedLabel.contains("_female") {
-                var labelWords = unparsedLabel.components(separatedBy: "_")
-                labelWords[0] = labelWords[0].uppercased()
-                label = labelWords.joined(separator: " ")
-            } else if unparsedLabel.contains("_faulty") {
-                let damageDescription = unparsedLabel.replacingOccurrences(of: "_faulty", with: "")
-                damage = damageDescription.prefix(1).uppercased() + String(damageDescription.dropFirst())
-            }
-        }
-        label = label.count > 0 ? label : "Unrecognized"
-        return ["classification": label, "damage": damage]
-    }
-    
     // Convenience method for pushing classification data to TableView
-    func displayResults(data: [VisualRecognitionV3.Classification]) {
+    func displayResults() {
         getTableController { tableController, drawer in
             if drawer.drawerPosition == .open {
                 return // assume user is inspecting results
             }
-            let parsedData = sortClassifications(data: data)
-            let classification = parsedData["classification"]!
+            var classification = ""
+            if self.classifications.isEmpty {
+                classification = "Unrecognized"
+            } else {
+                classification = prettifyLabel(label: self.classifications[0].classification)
+            }
             tableController.classificationLabel = classification
-            tableController.damage = parsedData["damage"]!
-            let damaged = parsedData["damage"]!.count > 0
+            
             if classification != "Unrecognized" {
                 print("fetching discovery")
-                fetchDiscoveryResults(query: classification, damaged: damaged)
+                fetchDiscoveryResults(query: classification)
             }
+            
             self.dismiss(animated: false, completion: nil)
             //            drawer.setDrawerPosition(position: .collapsed, animated: true)
         }
+    }
+    
+    // Remove any underscores from classification label
+    func prettifyLabel(label: String) -> String {
+        return label.components(separatedBy: "_").joined(separator: " ")
     }
     
     // MARK: - Discovery Methods
@@ -124,7 +116,7 @@ class ImageClassificationViewController: UIViewController {
 
     
     // Method for querying Discovery
-    func fetchDiscoveryResults(query: String, damaged: Bool = false) {
+    func fetchDiscoveryResults(query: String) {
         DispatchQueue.main.async {
             self.displayDiscoveryResults(data: "Retrieving more information on " + query + "...")
         }
@@ -134,16 +126,8 @@ class ImageClassificationViewController: UIViewController {
         }
         
         let queryItem = query.components(separatedBy: " ")[0]
-        print(queryItem)
-        var generalQuery = ""
-        var filter = ""
-        // search for troubleshooting information if cable is damaged
-        if damaged {
-            generalQuery = "text%3A%22faulty%20" + queryItem + "%22"
-        } else { // search for general information if cable is not damaged
-            generalQuery = "extracted_metadata.title%3A%22What%20is%20" + queryItem + "%3F%22"
-            filter = "text%3A%21%22faulty%22"
-        }
+        let generalQuery = "extracted_metadata.title%3A%22What%20is%20" + queryItem + "%3F%22"
+        let filter = "text%3A%21%22faulty%22"
         self.discovery.queryDocumentsInCollection(
             withEnvironmentID: discoveryEnvironmentID,
             withCollectionID: discoveryCollectionID,
@@ -154,17 +138,16 @@ class ImageClassificationViewController: UIViewController {
             queryResponse in
             if let results = queryResponse.results {
                 DispatchQueue.main.async() {
-                    print(queryResponse)
                     var truncatedString = ""
                     var sectionTitle = ""
                     var subTitle = ""
                     if results.count > 0 {
                         let text = results[0].text as! String
                         truncatedString = text.count >= 350 ? text.prefix(350) + "..." : text
-                        sectionTitle = damaged ? "Troubleshooting" : "Description"
+                        sectionTitle = "Description"
                         subTitle = query
                     } else {
-                        print(results)
+                        truncatedString = "No Discovery results found."
                     }
                     self.displayDiscoveryResults(data: truncatedString, title: sectionTitle, subTitle: subTitle)
                 }
@@ -213,11 +196,12 @@ class ImageClassificationViewController: UIViewController {
         }
         
         self.visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [visualRecognitionClassifierID], failure: failure) { classifiedImages in
-            let filtered = classifiedImages.images[0].classifiers[0].classes.prefix(2) //  limit results to 2
+            let filtered = classifiedImages.images[0].classifiers[0].classes.filter( {$0.score > 0.3} ).prefix(1) //  filter out results below certain confidence threshold and limit to 1
+            self.classifications = Array(filtered)
             
             // Update UI on main thread
             DispatchQueue.main.async {
-                self.displayResults( data: Array(filtered) )
+                self.displayResults()
             }
         }
     }

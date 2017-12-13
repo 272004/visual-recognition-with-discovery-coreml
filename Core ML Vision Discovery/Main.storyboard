@@ -109,25 +109,16 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17E-ta-aWP">
-                                            <rect key="frame" x="102" y="21" width="48" height="24"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <color key="textColor" red="0.93026602270000003" green="0.2562777698" blue="0.13707981999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="m5D-TF-aKL" firstAttribute="leading" secondItem="rVF-XE-Zcj" secondAttribute="leadingMargin" constant="15" id="8J3-YS-bxk"/>
                                         <constraint firstItem="Gae-ra-d2p" firstAttribute="top" secondItem="rVF-XE-Zcj" secondAttribute="topMargin" constant="10" id="BEz-zb-fVV"/>
                                         <constraint firstItem="m5D-TF-aKL" firstAttribute="top" secondItem="Gae-ra-d2p" secondAttribute="bottom" constant="15" id="K8r-CP-Otm"/>
                                         <constraint firstItem="Gae-ra-d2p" firstAttribute="leading" secondItem="rVF-XE-Zcj" secondAttribute="leadingMargin" constant="15" id="M01-KC-h3u"/>
-                                        <constraint firstItem="17E-ta-aWP" firstAttribute="leading" secondItem="Gae-ra-d2p" secondAttribute="trailing" constant="20" id="eZ5-Xi-KQj"/>
-                                        <constraint firstItem="17E-ta-aWP" firstAttribute="top" secondItem="rVF-XE-Zcj" secondAttribute="topMargin" constant="13" id="vC4-aA-4WA"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.83791679139999997" green="0.8385563493" blue="0.83801579479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <outlet property="damageLabel" destination="17E-ta-aWP" id="wMk-9T-yrf"/>
                                     <outlet property="label" destination="Gae-ra-d2p" id="RWx-0k-sbO"/>
                                     <outlet property="swipeLabel" destination="m5D-TF-aKL" id="J3A-h8-Sw8"/>
                                 </connections>
