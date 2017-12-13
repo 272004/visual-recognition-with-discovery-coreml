@@ -41,6 +41,10 @@ class ImageClassificationViewController: UIViewController {
         
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     //MARK: - Pulley Library methods
     
     private var pulleyViewController: PulleyViewController!
