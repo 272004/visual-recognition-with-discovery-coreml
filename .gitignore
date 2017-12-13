@@ -1,0 +1,12 @@
+# Finder
+.DS_Store
+
+# Xcode - User files
+xcuserdata/
+*.xcworkspace
+*.mlmodel
+
+*/frameworks/
+.build/
+Carthage/
+
