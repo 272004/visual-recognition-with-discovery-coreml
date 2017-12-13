@@ -36,7 +36,7 @@ class ImageClassificationViewController: UIViewController {
         super.viewDidLoad()
         self.visualRecognition = VisualRecognition(apiKey: visualRecognitionApiKey, version: version, apiKeyTestServer: visualRecognitionApiKey)
         self.discovery = Discovery(username: discoveryUsername, password: discoveryPassword, version: version)
-        
+        // Pull down updated model if one is available
         visualRecognition.updateLocalModel(classifierID: visualRecognitionClassifierID)
         
     }
@@ -75,9 +75,6 @@ class ImageClassificationViewController: UIViewController {
     // Convenience method for pushing classification data to TableView
     func displayResults() {
         getTableController { tableController, drawer in
-            if drawer.drawerPosition == .open {
-                return // assume user is inspecting results
-            }
             var classification = ""
             if self.classifications.isEmpty {
                 classification = "Unrecognized"
@@ -195,9 +192,11 @@ class ImageClassificationViewController: UIViewController {
             print(error)
         }
         
-        self.visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [visualRecognitionClassifierID], failure: failure) { classifiedImages in
-            let filtered = classifiedImages.images[0].classifiers[0].classes.filter( {$0.score > 0.3} ).prefix(1) //  filter out results below certain confidence threshold and limit to 1
-            self.classifications = Array(filtered)
+        self.visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [visualRecognitionClassifierID], threshold: localThreshold, failure: failure) { classifiedImages in
+            
+            if classifiedImages.images.count > 0 && classifiedImages.images[0].classifiers.count > 0 {
+                self.classifications = classifiedImages.images[0].classifiers[0].classes
+            }
             
             // Update UI on main thread
             DispatchQueue.main.async {
@@ -220,7 +219,7 @@ extension ImageClassificationViewController: UIImagePickerControllerDelegate, UI
             self.displayImage( image: image )
         }
         
-        classifyImage(for: image, localThreshold: 0.1)
+        classifyImage(for: image, localThreshold: 0.3)
     }
 }
 
