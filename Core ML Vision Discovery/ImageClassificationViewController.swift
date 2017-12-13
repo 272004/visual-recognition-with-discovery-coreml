@@ -19,6 +19,7 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     
+    // Update these with your own Visual Recognition and discovery credentials
     let visualRecognitionApiKey = ""
     let visualRecognitionClassifierID = ""
     let discoveryUsername = ""
@@ -143,7 +144,7 @@ class ImageClassificationViewController: UIViewController {
                     var sectionTitle = ""
                     var subTitle = ""
                     if results.count > 0 {
-                        let text = results[0].text as! String
+                        let text = results[0].text ?? "No Discovery results found."
                         truncatedString = text.count >= 350 ? text.prefix(350) + "..." : text
                         sectionTitle = "Description"
                         subTitle = query
