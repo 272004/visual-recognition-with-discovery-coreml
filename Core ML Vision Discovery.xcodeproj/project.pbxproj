@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D7870BB1FE1CEAC0018BFE9 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7870BA1FE1CEAC0018BFE9 /* VisualRecognitionV3.framework */; };
-		2D7870BC1FE1CEAC0018BFE9 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7870BA1FE1CEAC0018BFE9 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2D7870BE1FE1CEBB0018BFE9 /* DiscoveryV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7870BD1FE1CEBB0018BFE9 /* DiscoveryV1.framework */; };
-		2D7870BF1FE1CEBB0018BFE9 /* DiscoveryV1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7870BD1FE1CEBB0018BFE9 /* DiscoveryV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2D7870C11FE1CF6F0018BFE9 /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7870C01FE1CF6F0018BFE9 /* PulleyPassthroughScrollView.swift */; };
 		2D7870C31FE1CF910018BFE9 /* PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7870C21FE1CF910018BFE9 /* PulleyViewController.swift */; };
 		2D7870C51FE1CFDE0018BFE9 /* UIView+constrainToParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7870C41FE1CFDE0018BFE9 /* UIView+constrainToParent.swift */; };
+		2D7870CE1FE30AB60018BFE9 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7870CD1FE30AAE0018BFE9 /* VisualRecognitionV3.framework */; };
+		2D7870CF1FE30AB60018BFE9 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7870CD1FE30AAE0018BFE9 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2D7870D11FE30ABB0018BFE9 /* DiscoveryV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7870CC1FE30AA30018BFE9 /* DiscoveryV1.framework */; };
+		2D7870D21FE30ABB0018BFE9 /* DiscoveryV1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7870CC1FE30AA30018BFE9 /* DiscoveryV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2DBDD2951FCF7FAE004A6DC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2941FCF7FAE004A6DC1 /* AppDelegate.swift */; };
 		2DBDD2971FCF7FAE004A6DC1 /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2961FCF7FAE004A6DC1 /* ImageClassificationViewController.swift */; };
 		2DBDD29D1FCF7FAE004A6DC1 /* Core_ML_Vision_Discovery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD29B1FCF7FAE004A6DC1 /* Core_ML_Vision_Discovery.xcdatamodeld */; };
@@ -26,14 +26,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2DBB19A11FD6F75A0014FEA3 /* Embed Frameworks */ = {
+		2D7870D01FE30AB60018BFE9 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2D7870BF1FE1CEBB0018BFE9 /* DiscoveryV1.framework in Embed Frameworks */,
-				2D7870BC1FE1CEAC0018BFE9 /* VisualRecognitionV3.framework in Embed Frameworks */,
+				2D7870D21FE30ABB0018BFE9 /* DiscoveryV1.framework in Embed Frameworks */,
+				2D7870CF1FE30AB60018BFE9 /* VisualRecognitionV3.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,11 +41,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2D7870BA1FE1CEAC0018BFE9 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VisualRecognitionV3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D7870BD1FE1CEBB0018BFE9 /* DiscoveryV1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DiscoveryV1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D7870C01FE1CF6F0018BFE9 /* PulleyPassthroughScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulleyPassthroughScrollView.swift; sourceTree = "<group>"; };
 		2D7870C21FE1CF910018BFE9 /* PulleyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulleyViewController.swift; sourceTree = "<group>"; };
 		2D7870C41FE1CFDE0018BFE9 /* UIView+constrainToParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+constrainToParent.swift"; sourceTree = "<group>"; };
+		2D7870CC1FE30AA30018BFE9 /* DiscoveryV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscoveryV1.framework; path = Carthage/Build/iOS/DiscoveryV1.framework; sourceTree = SOURCE_ROOT; };
+		2D7870CD1FE30AAE0018BFE9 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = SOURCE_ROOT; };
 		2DBDD2911FCF7FAE004A6DC1 /* Core ML Vision Discovery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core ML Vision Discovery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBDD2941FCF7FAE004A6DC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DBDD2961FCF7FAE004A6DC1 /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
@@ -64,8 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D7870BE1FE1CEBB0018BFE9 /* DiscoveryV1.framework in Frameworks */,
-				2D7870BB1FE1CEAC0018BFE9 /* VisualRecognitionV3.framework in Frameworks */,
+				2D7870D11FE30ABB0018BFE9 /* DiscoveryV1.framework in Frameworks */,
+				2D7870CE1FE30AB60018BFE9 /* VisualRecognitionV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,8 +75,8 @@
 		2D119B161FD6103300CF8245 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2D7870BA1FE1CEAC0018BFE9 /* VisualRecognitionV3.framework */,
-				2D7870BD1FE1CEBB0018BFE9 /* DiscoveryV1.framework */,
+				2D7870CD1FE30AAE0018BFE9 /* VisualRecognitionV3.framework */,
+				2D7870CC1FE30AA30018BFE9 /* DiscoveryV1.framework */,
 			);
 			path = frameworks;
 			sourceTree = "<group>";
@@ -136,7 +136,7 @@
 				2DBDD28D1FCF7FAE004A6DC1 /* Sources */,
 				2DBDD28E1FCF7FAE004A6DC1 /* Frameworks */,
 				2DBDD28F1FCF7FAE004A6DC1 /* Resources */,
-				2DBB19A11FD6F75A0014FEA3 /* Embed Frameworks */,
+				2D7870D01FE30AB60018BFE9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -337,6 +337,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Core ML Vision Discovery/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Core-ML-Vision-Discovery";
@@ -351,6 +355,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Core ML Vision Discovery/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Core-ML-Vision-Discovery";
