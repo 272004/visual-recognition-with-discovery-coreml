@@ -4,11 +4,13 @@
 
 1. You will need Carthage to download the Watson SDK framework, if you do not already have Carthage installed you can follow instructions [here](https://github.com/Carthage/Carthage#installing-carthage)
 
-2. Once Carthage is set up, you can download the latest SDK by opening your terminal, navigating to the Core ML Vision Continuous Learning/ directory and running the following command
+2. Once Carthage is set up, you can download the latest SDK by opening your terminal, navigating to your project directory and running the following command
 ```
-carthage update
+carthage update --platform iOS
 ```
-3. After the package is done installing, you will find the Visual Recognition framework in the Carthage/Build/iOS directory. From this folder, drag `VisualRecognitionV3.framework` and `DiscoveryV1.framework` into your project's workspace, in the Core Ml Vision Discovery\ directory. The Watson Visual Recognition SDK makes it easy to keep track of your custom Core ML models and pull down new versions of custom classifiers from the IBM Cloud and store them on your device.
+3. After the package is done installing, you will find the Visual Recognition and Discovery frameworks in the Carthage/Build/iOS directory. From this folder, drag `VisualRecognitionV3.framework` and `DiscoveryV1.framework` into XCode in your projects directory. The Watson Visual Recognition SDK makes it easy to keep track of your custom Core ML models and pull down new versions of custom classifiers from the IBM Cloud and store them on your device.
+
+4. In the Embedded Binaries section of your project, add the two frameworks that you just dragged in.
 
 ## Setting up Visual Recognition
 
@@ -45,3 +47,7 @@ Username and password can be found in the 'Service credentials' tab of the Disco
 15. Next you can upload the documents by clicking 'browse from computer' and selecting all of the documents in the data/Discovery directory.
 
 16. Now all is needed is to copy the discovery credentials into the `ImageClassificationViewController.swift` file of our application, at the top of the file where there are a list of variables like `discoveryUsername = ""`. The Discovery username and password are located in the 'Service credentials' section of your Discovery service on IBM Cloud. The environment ID and collection ID are located in the Discovery tooling, in the 'Collection info' section of your collection. You can see them by clicking 'Use this collection in API'
+
+## Running the app
+
+17. The app is all ready now! Go ahead and run on your simulator or download onto your phone and run from there. When you take a picture (or choose from camera roll) of a usb connector or hdmi connector, the Visual recognition model will classify the image using the a Core ML model on the device. No internet or cell connection is needed. Once an image is classified, the application will send a query to Watson Discovery to retireve more information on the cable!
