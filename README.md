@@ -30,11 +30,11 @@ carthage update --platform iOS
 
 ## Setting up Discovery
 
-11. Next step is to store documents into Discovery. We will upload several documents with information on the cables that we trained the custom VR model on. That way, whenever a cable is classified, the app will send a query to discovery saying ‘What is ____?’ and Discovery will send back the relevant document
+11. Next step is to store documents into Discovery. We will upload several documents with information on the cables that we trained the custom VR model on. That way, whenever a cable is classified, the app will send a query to discovery,searching for documents with information on that cable and Discovery will send back the relevant document
 
 12. In the IBM Cloud console, open the Discovery tool. Once in the tool, create a new collection and call it ‘Connectors’
 
-13. Next you can upload the documents by clicking 'browse from computer' and selecting all of the documents in the data/Discovery directory.
+13. Next you can upload the documents by clicking 'browse from computer' and selecting all of the documents in the data/Discovery directory. These documents are trimmed down html pages from a website that gives simple definitions on common cables. The default configuration works for splitting these simple documents but you can learn more about parsing more complicated files [here](https://console.bluemix.net/docs/services/discovery/building.html#configuring-your-service)
 
 14. Now all is needed is to copy the discovery credentials into the `ImageClassificationViewController.swift` file of our application, at the top of the file where there are a list of variables like `discoveryUsername = ""`. The Discovery username and password are located in the 'Service credentials' section of your Discovery service on IBM Cloud. The environment ID and collection ID are located in the Discovery tooling, in the 'Collection info' section of your collection. You can see them by clicking 'Use this collection in API'
 
