@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import VisualRecognitionV3
-import DiscoveryV1
 
 class ResultsTableViewController: UITableViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -19,7 +17,7 @@ class ResultsTableViewController: UITableViewController {
     var discoveryResult = ""
     var discoveryResultTitle = ""
     var discoveryResultSubtitle = ""
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,5 +87,6 @@ extension ResultsTableViewController: PulleyDrawerViewControllerDelegate {
         tableView.isScrollEnabled = drawer.drawerPosition == .open
     }
 }
+
 
 

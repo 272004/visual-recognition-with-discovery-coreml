@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Core Ml Vision Simple
+//  Core Ml Vision Discovery
 //
 //  Created by Iain McCown on 11/29/17.
 //  Copyright © 2017 Iain McCown. All rights reserved.
