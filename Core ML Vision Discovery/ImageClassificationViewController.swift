@@ -128,12 +128,10 @@ class ImageClassificationViewController: UIViewController {
         }
         
         let queryItem = query.components(separatedBy: " ")[0]
-        let generalQuery = "extracted_metadata.title%3A%22What%20is%20" + queryItem + "%3F%22"
-        let filter = "text%3A%21%22faulty%22"
+        let generalQuery = "text%3A%22" + queryItem + "%22"
         self.discovery.queryDocumentsInCollection(
             withEnvironmentID: discoveryEnvironmentID,
             withCollectionID: discoveryCollectionID,
-            withFilter: filter,
             withQuery: generalQuery,
             failure: failure)
         {
