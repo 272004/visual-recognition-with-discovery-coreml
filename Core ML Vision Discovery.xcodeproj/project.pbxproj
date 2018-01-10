@@ -16,7 +16,6 @@
 		2D978A8C1FE89423006D4555 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D077E781FE893D700AE083C /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2DBDD2951FCF7FAE004A6DC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2941FCF7FAE004A6DC1 /* AppDelegate.swift */; };
 		2DBDD2971FCF7FAE004A6DC1 /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2961FCF7FAE004A6DC1 /* ImageClassificationViewController.swift */; };
-		2DBDD29D1FCF7FAE004A6DC1 /* Core_ML_Vision_Discovery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD29B1FCF7FAE004A6DC1 /* Core_ML_Vision_Discovery.xcdatamodeld */; };
 		2DBDD29F1FCF7FAE004A6DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD29E1FCF7FAE004A6DC1 /* Assets.xcassets */; };
 		2DBDD2A21FCF7FAE004A6DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD2A01FCF7FAE004A6DC1 /* LaunchScreen.storyboard */; };
 		2DBEDF461FD20680003F17C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBEDF451FD20672003F17C8 /* Main.storyboard */; };
@@ -49,7 +48,6 @@
 		2DBDD2911FCF7FAE004A6DC1 /* Core ML Vision Discovery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core ML Vision Discovery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBDD2941FCF7FAE004A6DC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DBDD2961FCF7FAE004A6DC1 /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
-		2DBDD29C1FCF7FAE004A6DC1 /* Core_ML_Vision_Discovery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Core_ML_Vision_Discovery.xcdatamodel; sourceTree = "<group>"; };
 		2DBDD29E1FCF7FAE004A6DC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DBDD2A11FCF7FAE004A6DC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DBDD2A31FCF7FAE004A6DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 				2DBDD29E1FCF7FAE004A6DC1 /* Assets.xcassets */,
 				2DBDD2A01FCF7FAE004A6DC1 /* LaunchScreen.storyboard */,
 				2DBDD2A31FCF7FAE004A6DC1 /* Info.plist */,
-				2DBDD29B1FCF7FAE004A6DC1 /* Core_ML_Vision_Discovery.xcdatamodeld */,
 				2DC5F13A1FD608D20063B2D5 /* ImageDisplayViewController.swift */,
 				2DC5F13C1FD609050063B2D5 /* ResultsTableViewController.swift */,
 				2DC5F13E1FD6093B0063B2D5 /* ResultsTableViewCell.swift */,
@@ -204,7 +201,6 @@
 				2D7870C11FE1CF6F0018BFE9 /* PulleyPassthroughScrollView.swift in Sources */,
 				2DBDD2971FCF7FAE004A6DC1 /* ImageClassificationViewController.swift in Sources */,
 				2DC5F13B1FD608D20063B2D5 /* ImageDisplayViewController.swift in Sources */,
-				2DBDD29D1FCF7FAE004A6DC1 /* Core_ML_Vision_Discovery.xcdatamodeld in Sources */,
 				2DBDD2951FCF7FAE004A6DC1 /* AppDelegate.swift in Sources */,
 				2D7870C51FE1CFDE0018BFE9 /* UIView+constrainToParent.swift in Sources */,
 				2D7870C31FE1CF910018BFE9 /* PulleyViewController.swift in Sources */,
@@ -392,19 +388,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		2DBDD29B1FCF7FAE004A6DC1 /* Core_ML_Vision_Discovery.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				2DBDD29C1FCF7FAE004A6DC1 /* Core_ML_Vision_Discovery.xcdatamodel */,
-			);
-			currentVersion = 2DBDD29C1FCF7FAE004A6DC1 /* Core_ML_Vision_Discovery.xcdatamodel */;
-			path = Core_ML_Vision_Discovery.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 2DBDD2891FCF7FAE004A6DC1 /* Project object */;
 }
