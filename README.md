@@ -1,9 +1,12 @@
 # Visual Recognition and Discovery with Core ML starter kit
 
-Classify images with [Watson Visual Recognition][vizreq] and [Core ML][core_ml], and then query [Watson Discovery][discovery] with the classification results. The images are classified offline using a deep neural network that is trained by Visual Recognition, and the results are sent to the Discovery service.
+Classify images with [Watson Visual Recognition][vizreq] and [Core ML][core_ml], and then query [Watson Discovery][discovery] with the classification results. 
+
+The images are classified offline using a deep neural network that is trained by Visual Recognition. Then the app takes the classification that Visual Recognition returns and sends it in a query to the Discovery service to return more information about the objects in the image.
+
 
 ## Before you begin
-- Consider downloading and configuring the [Visual Recognition with Core ML starter kit][vizreq_with_coreml] before using this starter. If you already completed that starter, skip the next sections and go to [Importing the frameworks from the SDK](#importing-the-frameworks-from-the-sdk)
+- Consider downloading and configuring the [Visual Recognition with Core ML starter kit][vizreq_with_coreml] before using this starter. If you already completed that starter, skip the next sections and go to [Installing the Watson Swift SDK](#installing-the-watson-swift-sdk).
 - Make sure that you have installed [Xcode 9][xcode_download] or later and iOS 11.0 or later. These versions are required to support Core ML.
 
 ## Getting the files
@@ -22,11 +25,13 @@ Use the [Visual Recognition Tool][vizreq_tooling] to upload images and train a c
 
 1.  From the project details page in the earlier step, click **Launch tool** and enter the `api_key` that you copied earlier.
 1.  Select **Create classifier** and name the classifier `Connectors`.
-1.  Upload each .zip file of sample images from the `Training Images` directory onto a class.
+1.  Upload each .zip file of sample images from the `Data/Training Images` directory onto a class.
 1.  Enter `HDMI` as the class name for the `hdmi_male.zip` file and `USB` for the `usb_male.zip` file and click **Create**.
 1.  After the classifier is created, copy and save the classifier ID. The classifier ID looks similar to `Connectors_424118776`.
 
 ## Installing the Watson Swift SDK
+Start here if you already downloaded and configured the [Visual Recognition with Core ML starter kit][vizreq_with_coreml].
+
 The Watson Swift SDK makes it easy to keep track of your custom Core ML models and to download your custom classifiers from IBM Cloud to your device.
 
 Use the Carthage dependency manager to download and build the Watson Swift SDK.
@@ -40,14 +45,12 @@ Use the Carthage dependency manager to download and build the Watson Swift SDK.
     ```
 
 ### Importing the frameworks from the SDK
-Start here if you already downloaded and configured the [Visual Recognition with Core ML starter kit][vizreq_with_coreml].
 
 1.  In the Watson Swift SDK, navigate to the Visual Recognition and Discovery frameworks in the `Carthage/Build/iOS` directory.
 1.  Drag `VisualRecognitionV3.framework` and `DiscoveryV1.framework` into XCode in your `projects` directory.
 1.  In Xcode, use the **Project Navigator** to select the `Core ML Vision Discovery.xcodeproj` project.
 1.  In the General settings tab, scroll down to **Embedded Binaries** and click the `+` icon.
-1.  Click **Add Other**, navigate to the `Carthage/Build/iOS` directory, and select **VisualRecognitionV3.framework**.
-1.  Repeat to add **DiscoveryV1.framework**.
+1.  Click **Add Other**, navigate to the `Carthage/Build/iOS` directory, and select both **VisualRecognitionV3.framework** and **DiscoveryV1.framework**.ss
 
 ## Setting up Discovery
 Next, you integrate Watson Discovery.
@@ -81,7 +84,7 @@ The app uses the Visual Recognition service and Core ML model on your device to 
 
 When you run the app, the SDK makes sure that the version of the Visual Recognition model on your device is in sync with the latest version on IBM Cloud. If the local version is older, the SDK downloads the model to your device. With a local model, you can classify images offline. You need to be connected to the internet to communicate with the Discovery service.
 
-1.  In Xcode, sSelect the `Core ML Vision Discovery` scheme.
+1.  In Xcode, select the `Core ML Vision Discovery` scheme.
 1.  Run the app in the simulator or on a device.
 1.  Classify an image by clicking the camera icon and selecting a photo from your photo library or by taking a picture of a USB or HDMI connector. To add your own images in the simulator, drag the image from Finder to the simulator window.
 
