@@ -1,9 +1,8 @@
 # Visual Recognition and Discovery with Core ML starter kit
 
-Classify images with [Watson Visual Recognition][vizreq] and [Core ML][core_ml], and then query [Watson Discovery][discovery] with the classification results. 
+Classify images with [Watson Visual Recognition][vizreq] and [Core ML][core_ml], and then query [Watson Discovery][discovery] with the classification results.
 
-The images are classified offline using a deep neural network that is trained by Visual Recognition. Then the app takes the classification that Visual Recognition returns and sends it in a query to the Discovery service to return more information about the objects in the image.
-
+The images are classified offline using a deep neural network that is trained by Visual Recognition. The app then takes the classification returned by Visual Recognition and sends it in a query to the Discovery service to return more information about the objects in the image.
 
 ## Before you begin
 - Consider downloading and configuring the [Visual Recognition with Core ML starter kit][vizreq_with_coreml] before using this starter. If you already completed that starter, skip the next sections and go to [Installing the Watson Swift SDK](#installing-the-watson-swift-sdk).
@@ -50,7 +49,7 @@ Use the Carthage dependency manager to download and build the Watson Swift SDK.
 1.  Drag `VisualRecognitionV3.framework` and `DiscoveryV1.framework` into XCode in your `projects` directory.
 1.  In Xcode, use the **Project Navigator** to select the `Core ML Vision Discovery.xcodeproj` project.
 1.  In the General settings tab, scroll down to **Embedded Binaries** and click the `+` icon.
-1.  Click **Add Other**, navigate to the `Carthage/Build/iOS` directory, and select both **VisualRecognitionV3.framework** and **DiscoveryV1.framework**.ss
+1.  Click **Add Other**, navigate to the `Carthage/Build/iOS` directory, and select both **VisualRecognitionV3.framework** and **DiscoveryV1.framework**.
 
 ## Setting up Discovery
 Next, you integrate Watson Discovery.
