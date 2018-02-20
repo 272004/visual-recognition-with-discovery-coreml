@@ -123,7 +123,7 @@ class ImageClassificationViewController: UIViewController {
             //            drawer.setDrawerPosition(position: .collapsed, animated: true)
         }
     }
-
+    
     
     // Method for querying Discovery
     func fetchDiscoveryResults(query: String) {
@@ -146,18 +146,17 @@ class ImageClassificationViewController: UIViewController {
             queryResponse in
             if let results = queryResponse.results {
                 DispatchQueue.main.async() {
-                    var truncatedString = ""
+                    var text = ""
                     var sectionTitle = ""
                     var subTitle = ""
                     if results.count > 0 {
-                        let text = results[0].text ?? "No Discovery results found."
-                        truncatedString = text.count >= 350 ? text.prefix(350) + "..." : text
+                        text = results[0].text ?? "No Discovery results found."
                         sectionTitle = "Description"
                         subTitle = query
                     } else {
-                        truncatedString = "No Discovery results found."
+                        text = "No Discovery results found."
                     }
-                    self.displayDiscoveryResults(data: truncatedString, title: sectionTitle, subTitle: subTitle)
+                    self.displayDiscoveryResults(data: text, title: sectionTitle, subTitle: subTitle)
                 }
             }
         }

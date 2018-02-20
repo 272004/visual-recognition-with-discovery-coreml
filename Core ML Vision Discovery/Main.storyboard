@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T0e-bw-WA3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T0e-bw-WA3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -98,13 +98,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gae-ra-d2p">
-                                            <rect key="frame" x="23" y="18" width="59" height="27.5"/>
+                                            <rect key="frame" x="31" y="21" width="59" height="27.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up for more information ↑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5D-TF-aKL">
-                                            <rect key="frame" x="23" y="60.5" width="250" height="21"/>
+                                            <rect key="frame" x="31" y="63.5" width="250" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -115,6 +115,7 @@
                                         <constraint firstItem="Gae-ra-d2p" firstAttribute="top" secondItem="rVF-XE-Zcj" secondAttribute="topMargin" constant="10" id="BEz-zb-fVV"/>
                                         <constraint firstItem="m5D-TF-aKL" firstAttribute="top" secondItem="Gae-ra-d2p" secondAttribute="bottom" constant="15" id="K8r-CP-Otm"/>
                                         <constraint firstItem="Gae-ra-d2p" firstAttribute="leading" secondItem="rVF-XE-Zcj" secondAttribute="leadingMargin" constant="15" id="M01-KC-h3u"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="m5D-TF-aKL" secondAttribute="bottom" constant="15" id="Ozq-xZ-Aba"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.83791679139999997" green="0.8385563493" blue="0.83801579479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -131,19 +132,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eW8-TM-Rvr">
-                                            <rect key="frame" x="28" y="28" width="48.5" height="23"/>
+                                            <rect key="frame" x="36" y="31" width="48.5" height="23"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roN-lQ-gTb">
-                                            <rect key="frame" x="28" y="71" width="319" height="21"/>
+                                            <rect key="frame" x="36" y="74" width="303" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyT-6R-q1h">
-                                            <rect key="frame" x="84.5" y="30" width="42" height="21"/>
+                                            <rect key="frame" x="92.5" y="33" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -153,6 +154,7 @@
                                         <constraint firstItem="qyT-6R-q1h" firstAttribute="leading" secondItem="eW8-TM-Rvr" secondAttribute="trailing" constant="8" id="0Fd-jq-LVC"/>
                                         <constraint firstItem="roN-lQ-gTb" firstAttribute="top" secondItem="qyT-6R-q1h" secondAttribute="bottom" constant="20" id="2dU-86-QI4"/>
                                         <constraint firstItem="roN-lQ-gTb" firstAttribute="leading" secondItem="hUZ-pc-1w4" secondAttribute="leadingMargin" constant="20" id="3pd-mN-6mS"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="roN-lQ-gTb" secondAttribute="bottom" constant="30" id="ElS-Dr-7eL"/>
                                         <constraint firstItem="roN-lQ-gTb" firstAttribute="top" secondItem="eW8-TM-Rvr" secondAttribute="bottom" constant="20" id="S8P-60-2a8"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="roN-lQ-gTb" secondAttribute="trailing" constant="20" id="Zms-De-4v4"/>
                                         <constraint firstItem="eW8-TM-Rvr" firstAttribute="leading" secondItem="hUZ-pc-1w4" secondAttribute="leadingMargin" constant="20" id="daJ-My-qyH"/>

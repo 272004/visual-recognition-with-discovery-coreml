@@ -47,15 +47,6 @@ class ResultsTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        if indexPath.row == 0 {
-            return 100.0
-        } else {
-            return 350.0
-        }
-    }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if indexPath.item == 0 {
