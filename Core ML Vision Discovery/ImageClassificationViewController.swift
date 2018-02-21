@@ -46,7 +46,7 @@ class ImageClassificationViewController: UIViewController {
         self.visualRecognition = VisualRecognition(apiKey: visualRecognitionApiKey, version: version, apiKeyTestServer: visualRecognitionApiKey)
         self.discovery = Discovery(username: discoveryUsername, password: discoveryPassword, version: version)
         // Pull down updated model if one is available
-        visualRecognition.updateLocalModel(classifierID: visualRecognitionClassifierID)
+        visualRecognition.updateLocalModel(classifierID: visualRecognitionClassifierID, failure: modelUpdateFail)
         
     }
     
@@ -131,21 +131,17 @@ class ImageClassificationViewController: UIViewController {
             self.displayDiscoveryResults(data: "Retrieving more information on " + query + "...")
         }
         
-        let failure = { (error: Error) in
-            print(error)
-        }
-        
         let queryItem = query.components(separatedBy: " ")[0]
         let generalQuery = "text%3A%22" + queryItem + "%22"
         self.discovery.queryDocumentsInCollection(
             withEnvironmentID: discoveryEnvironmentID,
             withCollectionID: discoveryCollectionID,
             withQuery: generalQuery,
-            failure: failure)
+            failure: discoveryFail)
         {
             queryResponse in
             if let results = queryResponse.results {
-                DispatchQueue.main.async() {
+                DispatchQueue.main.async {
                     var text = ""
                     var sectionTitle = ""
                     var subTitle = ""
@@ -199,7 +195,7 @@ class ImageClassificationViewController: UIViewController {
     func classifyImage(for image: UIImage, localThreshold: Double = 0.0) {
         
         let failure = { (error: Error) in
-            print(error)
+            self.showAlert("Could not classify image", alertMessage: error.localizedDescription)
         }
         
         self.visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [visualRecognitionClassifierID], threshold: localThreshold, failure: failure) { classifiedImages in
@@ -212,6 +208,52 @@ class ImageClassificationViewController: UIViewController {
             DispatchQueue.main.async {
                 self.displayResults()
             }
+        }
+    }
+    
+    //MARK: - Error Handling
+    
+    // Function to show an alert with an alertTitle String and alertMessage String
+    func showAlert(_ alertTitle: String, alertMessage: String) {
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func modelUpdateFail(error: Error) {
+        let descriptError = error as NSError
+        print(error)
+        let errorCode = descriptError.code
+        var errorMessage = ""
+        if errorCode == 401 {
+            errorMessage = "Invalid credentials. Please check your Visual Recognition credentials and try again."
+        }
+        switch errorCode {
+        case 401:
+            errorMessage = "Invalid credentials. Please check your Visual Recognition credentials and try again."
+        case 500:
+            errorMessage = "Internal server error. Please try again."
+        default:
+            errorMessage = "Please try again."
+        }
+        showAlert("Unable to download model", alertMessage: errorMessage)
+    }
+    
+    func discoveryFail(error: Error) {
+        let descriptError = error as NSError
+        let errorCode = descriptError.code
+        var errorMessage = ""
+        switch errorCode {
+        case 401:
+            errorMessage = "Invalid credentials. Please check your Discovery credentials and try again."
+        case 500:
+            errorMessage = "A problem occured when querying Discovery. Please try again."
+        default:
+            errorMessage = "Unable to reach Watson Discovery"
+        }
+        
+        DispatchQueue.main.async {
+            self.displayDiscoveryResults(data: errorMessage)
         }
     }
     
