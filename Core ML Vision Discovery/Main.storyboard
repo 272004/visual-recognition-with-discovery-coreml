@@ -209,15 +209,28 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Model:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZm-US-WsU">
+                                <rect key="frame" x="139" y="45" width="97" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="7PR-zP-HyF">
+                                <rect key="frame" x="251" y="45" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="rZm-US-WsU" firstAttribute="top" secondItem="iOR-ab-ZMI" secondAttribute="top" constant="25" id="19x-3E-A2W"/>
                             <constraint firstItem="Vsn-nO-Am5" firstAttribute="top" secondItem="DZg-KF-Kqx" secondAttribute="top" id="8C8-km-0AL"/>
                             <constraint firstItem="8Nq-r8-gmx" firstAttribute="bottom" secondItem="iOR-ab-ZMI" secondAttribute="bottom" id="C8T-Fl-mah"/>
                             <constraint firstItem="8Nq-r8-gmx" firstAttribute="trailing" secondItem="iOR-ab-ZMI" secondAttribute="trailing" id="Eb3-8f-fWl"/>
                             <constraint firstItem="Vsn-nO-Am5" firstAttribute="trailing" secondItem="iOR-ab-ZMI" secondAttribute="trailing" id="M39-hi-UK1"/>
                             <constraint firstItem="8Nq-r8-gmx" firstAttribute="top" secondItem="Vsn-nO-Am5" secondAttribute="bottom" id="Qfm-6U-gfT"/>
+                            <constraint firstItem="rZm-US-WsU" firstAttribute="centerX" secondItem="DZg-KF-Kqx" secondAttribute="centerX" id="UPt-BF-C8U"/>
+                            <constraint firstItem="7PR-zP-HyF" firstAttribute="leading" secondItem="rZm-US-WsU" secondAttribute="trailing" constant="15" id="YOq-do-5Bu"/>
                             <constraint firstItem="Vsn-nO-Am5" firstAttribute="leading" secondItem="iOR-ab-ZMI" secondAttribute="leading" id="mgX-Ou-loO"/>
+                            <constraint firstItem="7PR-zP-HyF" firstAttribute="top" secondItem="iOR-ab-ZMI" secondAttribute="top" constant="25" id="qEM-GO-vu6"/>
                             <constraint firstItem="8Nq-r8-gmx" firstAttribute="leading" secondItem="iOR-ab-ZMI" secondAttribute="leading" id="xWH-ev-LAV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iOR-ab-ZMI"/>
@@ -232,7 +245,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cameraButton" destination="DSI-Zu-n6s" id="alv-ux-Fu0"/>
+                        <outlet property="currentModelLabel" destination="rZm-US-WsU" id="7xW-ZS-d38"/>
                         <outlet property="displayContainer" destination="8Nq-r8-gmx" id="X2z-MZ-Qix"/>
+                        <outlet property="modelUpdateActivityIndicator" destination="7PR-zP-HyF" id="Nn8-Xw-0e0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wwL-Oa-4mw" sceneMemberID="firstResponder"/>

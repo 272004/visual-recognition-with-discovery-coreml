@@ -25,6 +25,8 @@ class ImageClassificationViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var displayContainer: UIView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var currentModelLabel: UILabel!
+    @IBOutlet weak var modelUpdateActivityIndicator: UIActivityIndicatorView!
     
     
     // Update these with your own Visual Recognition and discovery credentials
@@ -46,7 +48,7 @@ class ImageClassificationViewController: UIViewController {
         self.visualRecognition = VisualRecognition(apiKey: visualRecognitionApiKey, version: version, apiKeyTestServer: visualRecognitionApiKey)
         self.discovery = Discovery(username: discoveryUsername, password: discoveryPassword, version: version)
         // Pull down updated model if one is available
-        visualRecognition.updateLocalModel(classifierID: visualRecognitionClassifierID, failure: modelUpdateFail)
+        self.invokeModelUpdate()
         
     }
     
@@ -54,7 +56,33 @@ class ImageClassificationViewController: UIViewController {
         return true
     }
     
-    //MARK: - Pulley Library methods
+    // MARK: - Model Methods
+    
+    func invokeModelUpdate()
+    {
+        let failure = { (error: Error) in
+            print(error)
+            let descriptError = error as NSError
+            DispatchQueue.main.async {
+                self.currentModelLabel.text = descriptError.code == 401 ? "Error updating model: Invalid Credentials" : "Error updating model"
+                self.modelUpdateActivityIndicator.stopAnimating()
+            }
+        }
+        
+        let success = {
+            DispatchQueue.main.async {
+                self.currentModelLabel.text = "Current Model: \(self.visualRecognitionClassifierID)"
+                self.modelUpdateActivityIndicator.stopAnimating()
+            }
+        }
+        
+        self.currentModelLabel.text = "Updating model..."
+        self.modelUpdateActivityIndicator.startAnimating()
+        
+        visualRecognition.updateLocalModel(classifierID: visualRecognitionClassifierID, failure: failure, success: success)
+    }
+    
+    // MARK: - Pulley Library methods
     
     private var pulleyViewController: PulleyViewController!
     
