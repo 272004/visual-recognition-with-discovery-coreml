@@ -36,7 +36,7 @@ The Watson Swift SDK makes it easy to keep track of your custom Core ML models a
 Use the Carthage dependency manager to download and build the Watson Swift SDK.
 
 1.  Install [Carthage](https://github.com/Carthage/Carthage#installing-carthage).
-1.  Open a terminal window and navigate to the `Core ML Vision Discovery` directory.
+1.  Open a terminal window and navigate to this project's directory.
 1.  Run the following command to download and build the Watson Swift SDK:
 
     ```bash
