@@ -26,16 +26,15 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var displayContainer: UIView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var currentModelLabel: UILabel!
-    @IBOutlet weak var modelUpdateActivityIndicator: UIActivityIndicatorView!
     
     
     // Update these with your own Visual Recognition and discovery credentials
-    let visualRecognitionApiKey = ""
-    let visualRecognitionClassifierID = ""
-    let discoveryUsername = ""
-    let discoveryPassword = ""
-    let discoveryEnvironmentID = ""
-    let discoveryCollectionID = ""
+    let visualRecognitionApiKey = "9a88901d-b8ff-4e5b-bf64-e0ad07e8eb0d"
+    let visualRecognitionClassifierID = "connectors"
+    let discoveryUsername = "d4794a57-082f-4c39-b476-e8274c54abee"
+    let discoveryPassword = "RNMwUSDVk22v"
+    let discoveryEnvironmentID = "3c60ebc9-8466-40f9-8165-bf74a67ab11a"
+    let discoveryCollectionID = "187070bd-560e-4d44-9f4f-bb6bed2bd5ec"
     let version = "2017-11-10"
     
     var visualRecognition: VisualRecognition!
@@ -47,9 +46,12 @@ class ImageClassificationViewController: UIViewController {
         super.viewDidLoad()
         self.visualRecognition = VisualRecognition(apiKey: visualRecognitionApiKey, version: version, apiKeyTestServer: visualRecognitionApiKey)
         self.discovery = Discovery(username: discoveryUsername, password: discoveryPassword, version: version)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         // Pull down updated model if one is available
         self.invokeModelUpdate()
-        
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -65,19 +67,17 @@ class ImageClassificationViewController: UIViewController {
             let descriptError = error as NSError
             DispatchQueue.main.async {
                 self.currentModelLabel.text = descriptError.code == 401 ? "Error updating model: Invalid Credentials" : "Error updating model"
-                self.modelUpdateActivityIndicator.stopAnimating()
+                SwiftSpinner.hide()
             }
         }
         
         let success = {
             DispatchQueue.main.async {
                 self.currentModelLabel.text = "Current Model: \(self.visualRecognitionClassifierID)"
-                self.modelUpdateActivityIndicator.stopAnimating()
+                SwiftSpinner.hide()
             }
         }
-        
-        self.currentModelLabel.text = "Updating model..."
-        self.modelUpdateActivityIndicator.startAnimating()
+        SwiftSpinner.show("Compiling model...")
         
         visualRecognition.updateLocalModel(classifierID: visualRecognitionClassifierID, failure: failure, success: success)
     }
@@ -195,7 +195,7 @@ class ImageClassificationViewController: UIViewController {
             presentPhotoPicker(sourceType: .photoLibrary)
             return
         }
-        
+
         let photoSourcePicker = UIAlertController()
         let takePhoto = UIAlertAction(title: "Take Photo", style: .default) { [unowned self] _ in
             self.presentPhotoPicker(sourceType: .camera)
@@ -203,11 +203,11 @@ class ImageClassificationViewController: UIViewController {
         let choosePhoto = UIAlertAction(title: "Choose Photo", style: .default) { [unowned self] _ in
             self.presentPhotoPicker(sourceType: .photoLibrary)
         }
-        
+
         photoSourcePicker.addAction(takePhoto)
         photoSourcePicker.addAction(choosePhoto)
         photoSourcePicker.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
+
         present(photoSourcePicker, animated: true)
     }
     
