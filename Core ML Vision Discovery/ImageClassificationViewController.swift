@@ -29,12 +29,12 @@ class ImageClassificationViewController: UIViewController {
     
     
     // Update these with your own Visual Recognition and discovery credentials
-    let visualRecognitionApiKey = "9a88901d-b8ff-4e5b-bf64-e0ad07e8eb0d"
-    let visualRecognitionClassifierID = "connectors"
-    let discoveryUsername = "d4794a57-082f-4c39-b476-e8274c54abee"
-    let discoveryPassword = "RNMwUSDVk22v"
-    let discoveryEnvironmentID = "3c60ebc9-8466-40f9-8165-bf74a67ab11a"
-    let discoveryCollectionID = "187070bd-560e-4d44-9f4f-bb6bed2bd5ec"
+    let visualRecognitionApiKey = ""
+    let visualRecognitionClassifierID = ""
+    let discoveryUsername = ""
+    let discoveryPassword = ""
+    let discoveryEnvironmentID = ""
+    let discoveryCollectionID = ""
     let version = "2017-11-10"
     
     var visualRecognition: VisualRecognition!
