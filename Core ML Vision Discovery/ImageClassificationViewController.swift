@@ -26,6 +26,7 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var displayContainer: UIView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var currentModelLabel: UILabel!
+    @IBOutlet weak var updateModelButton: UIBarButtonItem!
     
     
     // Update these with your own Visual Recognition and discovery credentials
@@ -87,6 +88,11 @@ class ImageClassificationViewController: UIViewController {
 
         SwiftSpinner.show("Compiling model...")
         visualRecognition.updateLocalModel(classifierID: visualRecognitionClassifierID, failure: failure, success: success)
+    }
+    
+    
+    @IBAction func updateModel(_ sender: UIBarButtonItem) {
+        self.invokeModelUpdate()
     }
     
     // MARK: - Pulley Library methods

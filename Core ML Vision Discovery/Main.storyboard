@@ -207,6 +207,12 @@
                                             <action selector="takePicture" destination="T0e-bw-WA3" id="XVV-8H-aOJ"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="L2k-I3-7tc"/>
+                                    <barButtonItem systemItem="refresh" id="OK2-ew-8Ot">
+                                        <connections>
+                                            <action selector="updateModel:" destination="T0e-bw-WA3" id="cBV-rj-cjj"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Model:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZm-US-WsU">
@@ -244,6 +250,7 @@
                         <outlet property="cameraButton" destination="DSI-Zu-n6s" id="alv-ux-Fu0"/>
                         <outlet property="currentModelLabel" destination="rZm-US-WsU" id="7xW-ZS-d38"/>
                         <outlet property="displayContainer" destination="8Nq-r8-gmx" id="X2z-MZ-Qix"/>
+                        <outlet property="updateModelButton" destination="OK2-ew-8Ot" id="oWf-7c-j3V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wwL-Oa-4mw" sceneMemberID="firstResponder"/>
