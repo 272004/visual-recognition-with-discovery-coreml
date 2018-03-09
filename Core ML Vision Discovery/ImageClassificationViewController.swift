@@ -40,11 +40,13 @@ class ImageClassificationViewController: UIViewController {
     var visualRecognition: VisualRecognition!
     var discovery: Discovery!
     
-    var classifications: [VisualRecognitionV3.Classification] = []
+    var classifications: [VisualRecognitionV3.ClassResult] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.visualRecognition = VisualRecognition(apiKey: visualRecognitionApiKey, version: version, apiKeyTestServer: visualRecognitionApiKey)
+        self.visualRecognition = VisualRecognition(apiKey: visualRecognitionApiKey, version: version)
+        // TODO: Remove test service
+        self.visualRecognition.serviceURL = "https://alchemyapi-s.watsonplatform.net/visual-recognition-playpen/api"
         self.discovery = Discovery(username: discoveryUsername, password: discoveryPassword, version: version)
         
     }
@@ -120,7 +122,7 @@ class ImageClassificationViewController: UIViewController {
             if self.classifications.isEmpty {
                 classification = "Unrecognized"
             } else {
-                classification = prettifyLabel(label: self.classifications[0].classification)
+                classification = prettifyLabel(label: self.classifications[0].className)
             }
             tableController.classificationLabel = classification
             
