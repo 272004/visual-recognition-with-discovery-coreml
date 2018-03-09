@@ -25,6 +25,8 @@ class ImageClassificationViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var displayContainer: UIView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var currentModelLabel: UILabel!
+    @IBOutlet weak var updateModelButton: UIBarButtonItem!
     
     
     // Update these with your own Visual Recognition and discovery credentials
@@ -47,16 +49,53 @@ class ImageClassificationViewController: UIViewController {
         // TODO: Remove test service
         self.visualRecognition.serviceURL = "https://alchemyapi-s.watsonplatform.net/visual-recognition-playpen/api"
         self.discovery = Discovery(username: discoveryUsername, password: discoveryPassword, version: version)
-        // Pull down updated model if one is available
-        visualRecognition.updateLocalModel(classifierID: visualRecognitionClassifierID, failure: modelUpdateFail)
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // Pull down model if none on device
+        let localModels = try? visualRecognition.listLocalModels()
+        if localModels == nil {
+            self.invokeModelUpdate()
+        } else {
+            self.currentModelLabel.text = "Current Model: \(self.visualRecognitionClassifierID)"
+        }
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
-    //MARK: - Pulley Library methods
+    // MARK: - Model Methods
+    
+    func invokeModelUpdate()
+    {
+        let failure = { (error: Error) in
+            print(error)
+            let descriptError = error as NSError
+            DispatchQueue.main.async {
+                self.currentModelLabel.text = descriptError.code == 401 ? "Error updating model: Invalid Credentials" : "Error updating model"
+                SwiftSpinner.hide()
+            }
+        }
+        
+        let success = {
+            DispatchQueue.main.async {
+                self.currentModelLabel.text = "Current Model: \(self.visualRecognitionClassifierID)"
+                SwiftSpinner.hide()
+            }
+        }
+
+        SwiftSpinner.show("Compiling model...")
+        visualRecognition.updateLocalModel(classifierID: visualRecognitionClassifierID, failure: failure, success: success)
+    }
+    
+    
+    @IBAction func updateModel(_ sender: UIBarButtonItem) {
+        self.invokeModelUpdate()
+    }
+    
+    // MARK: - Pulley Library methods
     
     private var pulleyViewController: PulleyViewController!
     
@@ -169,7 +208,7 @@ class ImageClassificationViewController: UIViewController {
             presentPhotoPicker(sourceType: .photoLibrary)
             return
         }
-        
+
         let photoSourcePicker = UIAlertController()
         let takePhoto = UIAlertAction(title: "Take Photo", style: .default) { [unowned self] _ in
             self.presentPhotoPicker(sourceType: .camera)
@@ -177,11 +216,11 @@ class ImageClassificationViewController: UIViewController {
         let choosePhoto = UIAlertAction(title: "Choose Photo", style: .default) { [unowned self] _ in
             self.presentPhotoPicker(sourceType: .photoLibrary)
         }
-        
+
         photoSourcePicker.addAction(takePhoto)
         photoSourcePicker.addAction(choosePhoto)
         photoSourcePicker.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
+
         present(photoSourcePicker, animated: true)
     }
     
