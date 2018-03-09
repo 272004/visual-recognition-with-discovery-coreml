@@ -57,7 +57,7 @@ class ImageClassificationViewController: UIViewController {
         if localModels == nil {
             self.invokeModelUpdate()
         } else {
-            self.currentModelLabel.text = "Current Model: corexmlxsdkxtestxclassifierx04_1739674724"
+            self.currentModelLabel.text = "Current Model: \(self.visualRecognitionClassifierID)"
         }
     }
     
