@@ -86,6 +86,7 @@ When you run the app, the SDK makes sure that the version of the Visual Recognit
 1.  In Xcode, select the `Core ML Vision Discovery` scheme.
 1.  Run the app in the simulator or on a device.
 1.  Classify an image by clicking the camera icon and selecting a photo from your photo library or by taking a picture of a USB or HDMI connector. To add your own images in the simulator, drag the image from Finder to the simulator window.
+1. Pull new versions of the visual recognition model with the refresh button in the upper right.
 
     If you're online, the application queries the Discovery service and displays information about the classification results in the bottom panel.
 
