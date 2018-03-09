@@ -52,8 +52,13 @@ class ImageClassificationViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        // Pull down updated model if one is available
-        self.invokeModelUpdate()
+        // Pull down model if none on device
+        let localModels = try? visualRecognition.listLocalModels()
+        if localModels == nil {
+            self.invokeModelUpdate()
+        } else {
+            self.currentModelLabel.text = "Current Model: corexmlxsdkxtestxclassifierx04_1739674724"
+        }
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -79,8 +84,8 @@ class ImageClassificationViewController: UIViewController {
                 SwiftSpinner.hide()
             }
         }
+
         SwiftSpinner.show("Compiling model...")
-        
         visualRecognition.updateLocalModel(classifierID: visualRecognitionClassifierID, failure: failure, success: success)
     }
     

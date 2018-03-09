@@ -222,9 +222,11 @@
                             <constraint firstItem="Vsn-nO-Am5" firstAttribute="top" secondItem="DZg-KF-Kqx" secondAttribute="top" id="8C8-km-0AL"/>
                             <constraint firstItem="8Nq-r8-gmx" firstAttribute="bottom" secondItem="iOR-ab-ZMI" secondAttribute="bottom" id="C8T-Fl-mah"/>
                             <constraint firstItem="8Nq-r8-gmx" firstAttribute="trailing" secondItem="iOR-ab-ZMI" secondAttribute="trailing" id="Eb3-8f-fWl"/>
+                            <constraint firstItem="rZm-US-WsU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iOR-ab-ZMI" secondAttribute="leading" constant="60" id="HeY-Yf-WrY"/>
                             <constraint firstItem="Vsn-nO-Am5" firstAttribute="trailing" secondItem="iOR-ab-ZMI" secondAttribute="trailing" id="M39-hi-UK1"/>
                             <constraint firstItem="8Nq-r8-gmx" firstAttribute="top" secondItem="Vsn-nO-Am5" secondAttribute="bottom" id="Qfm-6U-gfT"/>
                             <constraint firstItem="rZm-US-WsU" firstAttribute="centerX" secondItem="DZg-KF-Kqx" secondAttribute="centerX" id="UPt-BF-C8U"/>
+                            <constraint firstItem="iOR-ab-ZMI" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rZm-US-WsU" secondAttribute="trailing" constant="20" id="al3-tD-oih"/>
                             <constraint firstItem="Vsn-nO-Am5" firstAttribute="leading" secondItem="iOR-ab-ZMI" secondAttribute="leading" id="mgX-Ou-loO"/>
                             <constraint firstItem="8Nq-r8-gmx" firstAttribute="leading" secondItem="iOR-ab-ZMI" secondAttribute="leading" id="xWH-ev-LAV"/>
                         </constraints>
