@@ -1,11 +1,11 @@
-# Visual Recognition and Discovery with Core ML starter kit
+# Visual Recognition and Discovery with Core ML
 
 Classify images with [Watson Visual Recognition][vizreq] and [Core ML][core_ml], and then query [Watson Discovery][discovery] with the classification results.
 
 The images are classified offline using a deep neural network that is trained by Visual Recognition. The app then takes the classification returned by Visual Recognition and sends it in a query to the Discovery service to return more information about the objects in the image.
 
 ## Before you begin
-- Consider downloading and configuring the [Visual Recognition with Core ML starter kit][vizreq_with_coreml] before using this starter. If you already completed that starter, skip the next sections and go to [Installing the Watson Swift SDK](#installing-the-watson-swift-sdk).
+- Consider downloading and configuring [Visual Recognition with Core ML][vizreq_with_coreml] before using this starter. If you already completed that starter, skip the next sections and go to [Installing the Watson Swift SDK](#installing-the-watson-swift-sdk).
 - Make sure that you have installed [Xcode 9][xcode_download] or later and iOS 11.0 or later. These versions are required to support Core ML.
 
 ## Getting the files
@@ -29,7 +29,7 @@ Use the [Visual Recognition Tool][vizreq_tooling] to upload images and train a c
 1.  After the classifier is created, copy and save the classifier ID. The classifier ID looks similar to `Connectors_424118776`.
 
 ## Installing the Watson Swift SDK
-Start here if you already downloaded and configured the [Visual Recognition with Core ML starter kit][vizreq_with_coreml].
+Start here if you already downloaded and configured [Visual Recognition with Core ML][vizreq_with_coreml].
 
 The Watson Swift SDK makes it easy to keep track of your custom Core ML models and to download your custom classifiers from IBM Cloud to your device.
 
