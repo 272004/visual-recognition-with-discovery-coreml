@@ -46,8 +46,6 @@ class ImageClassificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.visualRecognition = VisualRecognition(apiKey: visualRecognitionApiKey, version: version)
-        // TODO: Remove test service
-        self.visualRecognition.serviceURL = "https://alchemyapi-s.watsonplatform.net/visual-recognition-playpen/api"
         self.discovery = Discovery(username: discoveryUsername, password: discoveryPassword, version: version)
         
     }
