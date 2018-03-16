@@ -11,22 +11,26 @@ The images are classified offline using a deep neural network that is trained by
 ## Getting the files
 Use GitHub to clone the repository locally, or download the .zip file of the repository and extract the files.
 
-## Creating your Visual Recognition service
-If you have an existing instance of the Visual Recognition service, you can use it. Otherwise, follow these steps to create an instance:
+### Setting up Visual Recognition in Watson Studio
+1.  Log into [Watson Studio][watson_studio_visrec_tooling]. From this link you can create an IBM Cloud account, sign up for Watson Studio, or log in.
+1.  After you sign up or log in, you'll be on the Visual Recognition instance overview page in Watson Studio.
 
-1.  <a href="https://console.bluemix.net/registration/trial/?target=%2Fdeveloper%2Fwatson%2Fcreate-project%3Fservices%3Dwatson_vision_combined%26action%3Dcreate%26hideTours%3Dtrue" target="_blank">Create an instance</a> of the Visual Recognition service. From that link you can create or log into an IBM Cloud account.
-1.  In the project details page, click **Show** to reveal the API key, and then copy and save the `api_key` value.
+### Training the model
+1.  In Watson Studio on the Visual Recognition instance overview page, click **Create Model** in the Custom box.
+1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project 'Custom Core ML' and click the **Create**.
+1.  Upload each .zip file of sample images from the `Training Images` directory onto the data panel. Add the `hdmi_male.zip` file to your model by clicking the **Browse** button in the data panel. Also add the `usb_male.zip` file to your model.
+1.  Click **Train Model**.
 
-**Tip:** To return to the project details page, go to **[Projects](https://console.bluemix.net/developer/watson/projects)** page and select the instance of Visual Recognition that you created.
+### Copy your Model ID and API Key
+1.  In Watson Studio on the Visual Recognition instance overview page, click your Visual Recognition instance name (it's next to Associated Service). 
+1.  Scroll down to find the **Custom Core ML** classifier you just created. 
+1.  Copy the **Model ID** of the classifier.
+1.  In the Visual Recognition instance overview page in Watson Studio. Click the **Credentials** tab, and then click **View credentials**. Copy the `api_key` of the service.
 
-## Training a Visual Recognition model
-Use the [Visual Recognition Tool][vizreq_tooling] to upload images and train a custom model (also called a classifier). The .zip files contain sample images of HDMI and USB connectors.
-
-1.  From the project details page in the earlier step, click **Launch tool** and enter the `api_key` that you copied earlier.
-1.  Select **Create classifier** and name the classifier `Connectors`.
-1.  Upload each .zip file of sample images from the `Data/Training Images` directory onto a class.
-1.  Enter `HDMI` as the class name for the `hdmi_male.zip` file and `USB` for the `usb_male.zip` file and click **Create**.
-1.  After the classifier is created, copy and save the classifier ID. The classifier ID looks similar to `Connectors_424118776`.
+### Adding the classifierId and apiKey to the project
+1.  Open the project in XCode.
+1.  Copy the **Model ID** and paste it into the **classifierID** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20With%20Discovery/Core%20ML%20Vision%Discovery/ImageClassificationViewController.swift) file.
+1.  Copy your **api_key** and paste it into the **apiKey** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20With%20Discovery/Core%20ML%20Vision%Discovery/ImageClassificationViewController.swift) file.
 
 ## Installing the Watson Swift SDK
 Start here if you already downloaded and configured [Visual Recognition with Core ML][vizreq_with_coreml].
@@ -57,14 +61,16 @@ Next, you integrate Watson Discovery.
 ### Creating your Discovery service
 If you have an existing instance of the Discovery service, you can use it. Otherwise, follow these steps to create an instance:
 
-1. In the same Watson console where you created the Visual Recognition service, <a target="_blank" href="https://console.bluemix.net/developer/watson/create-project?services=discovery&action=create">create an instance</a> of the Discovery service.
-1.  In the project details page, click **Show** to reveal the credentials.
-1.  Copy and save the `username` and `password` values. You'll use them next in the Discovery Tool.
+1.  In Watson Studio, click **Services** > **Watson Services**. 
+1.  Click **Add service** and add `Discovery`.
+1.  Select a plan and click **Create**. 
+1.  In your Discovery service overview page, click **Credentials**. If no credentials are available, click **New Credential** to create a new set of credentials.
+1.  Click **View Credentials** and copy and save the `username` and `password` values. You'll use them next in the Discovery Tool.
 
 ### Configuring your Discovery service
 To set up Discovery, upload the sample documents that have information about the cables. The app queries your documents in the Discovery service and returns relevant information about the cable.
 
-1.  From the project details page in the earlier step, click **Launch tool**.
+1.  From the Discovery service overview page in the earlier step, click **Launch tool**.
 1.  Create a data collection and name it `Connectors`. Accept the default configuration and click **Create**.
 1.  Upload the HTML documents from the [Data/Discovery](../master/Data/Discovery) directory.
 1.  Under Collection info, click **Use this collection in API**. Copy and save the `Collection Id` and  `Environment Id` values.
@@ -107,3 +113,4 @@ Try using your own data: Train a Visual Recognition classifier with your own ima
 [vizreq_with_coreml]: https://github.com/watson-developer-cloud/visual-recognition-coreml/
 [vizreq_tooling]: https://watson-visual-recognition.ng.bluemix.net/
 [xcode_download]: https://developer.apple.com/xcode/downloads/
+[watson_studio_visrec_tooling]: https://dataplatform.ibm.com/registration/stepone?target=watson_vision_combined&context=wdp&apps=watson_studio?cm_sp=WatsonPlatform-WatsonPlatform-_-OnPageNavCTA-IBMWatson_VisualRecognition-_-CoreMLGithub
