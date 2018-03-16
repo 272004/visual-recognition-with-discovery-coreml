@@ -11,25 +11,26 @@ The images are classified offline using a deep neural network that is trained by
 ## Getting the files
 Use GitHub to clone the repository locally, or download the .zip file of the repository and extract the files.
 
-## Setting up Visual Recognition in Watson Studio
-1.  Log into [Watson Studio][watson_studio_visrec_tooling].
-1.  Sign in to Studio and create an **IBM Cloud account** if you don't have one. 
-    *   If you already have an IBM Cloud account, click to **Use it to sign up for IBM Data Platform** and skip to step 3. 
-    *   If you already have both an IBM Cloud account and an IBM Studio account, click **Sign in**. and skip to step 3. 
-    *   If you don't have an IBM Cloud account, enter your email address, complete the form, and click **Create Account**.
-1.  In Watson Studio, you'll be on the Visual Recognition instance overview page. Click the **Credentials** tab, and then click **View credentials**. Copy the `api_key` of the service.
-1.  Click the **Overview** tab, and then under "Custom", click **Create Model**.
-1.  If a project is not yet associated with the Visual Recognition instance you created, a project will be created now. Name your project "Custom Core ML Project" and click **Create**.
-1.  Upload each .zip file of sample images from the `Training Images` directory onto the data panel. 
-1.  Add the `hdmi_male.zip` file to your model from the data panel.
-1.  Add the `usb_male.zip` file to your model.
-1.  Click **Train Model**.
-1.  Click your Visual Recognition instance that is displayed next to "Associated Service". Scroll down to find the **Custom Core ML** classifier you just created. Copy the **Model ID** of the classifier.
+### Setting up Visual Recognition in Watson Studio
+1.  Log into [Watson Studio][watson_studio_visrec_tooling]. From this link you can create an IBM Cloud account, sign up for Watson Studio, or log in.
+1.  After you sign up or log in, you'll be on the Visual Recognition instance overview page in Watson Studio. Click the **Credentials** tab, and then click **View credentials**. Copy the `api_key` of the service.
 
-## Adding the classifierId and apiKey to the project
+### Training the model
+1.  From the instance overview page, click **Create Model** in the Custom box.
+1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project and give it a description. Click the **Create** button to create your project.
+1.  Upload each .zip file of sample images from the `Training Images` directory onto the data panel. 
+1.  Add the `hdmi_male.zip` file to your model from the data panel. Also add the `usb_male.zip` file to your model.
+1.  Click **Train Model**.
+
+### Copy your Model ID
+1.  Click your Visual Recognition instance name (it's next to Associated Service). 
+1.  Scroll down to find the **Custom Core ML** classifier you just created. 
+1.  Copy the **Model ID** of the classifier.
+
+### Adding the classifierId and apiKey to the project
 1.  Open the project in XCode.
-1.  Copy the classifier ID and paste it into the **classifierID** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20With%20Discovery/Core%20ML%20Vision%Discovery/ImageClassificationViewController.swift) file.
-1.  Copy your API Key and paste it into the **apiKey** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20With%20Discovery/Core%20ML%20Vision%Discovery/ImageClassificationViewController.swift) file.
+1.  Copy the **Model ID** and paste it into the **classifierID** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20With%20Discovery/Core%20ML%20Vision%Discovery/ImageClassificationViewController.swift) file.
+1.  Copy your **api_key** and paste it into the **apiKey** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20With%20Discovery/Core%20ML%20Vision%Discovery/ImageClassificationViewController.swift) file.
 
 ## Installing the Watson Swift SDK
 Start here if you already downloaded and configured [Visual Recognition with Core ML][vizreq_with_coreml].
@@ -60,14 +61,16 @@ Next, you integrate Watson Discovery.
 ### Creating your Discovery service
 If you have an existing instance of the Discovery service, you can use it. Otherwise, follow these steps to create an instance:
 
-1. In the same Watson console where you created the Visual Recognition service, <a target="_blank" href="https://console.bluemix.net/developer/watson/create-project?services=discovery&action=create">create an instance</a> of the Discovery service.
-1.  In the project details page, click **Show** to reveal the credentials.
-1.  Copy and save the `username` and `password` values. You'll use them next in the Discovery Tool.
+1.  In Watson Studio, click **Services** > **Watson Services**. 
+1.  Click **Add service** and add `Discovery`.
+1.  Select the Lite plan and click **Create**. 
+1.  In your Discovery service overview page, click **Credentials**. If no credentials are available, click **New Credential** to create a new set of credentials.
+1.  Click **View Credentials** and copy and save the `username` and `password` values. You'll use them next in the Discovery Tool.
 
 ### Configuring your Discovery service
 To set up Discovery, upload the sample documents that have information about the cables. The app queries your documents in the Discovery service and returns relevant information about the cable.
 
-1.  From the project details page in the earlier step, click **Launch tool**.
+1.  From the Discovery service overview page in the earlier step, click **Launch tool**.
 1.  Create a data collection and name it `Connectors`. Accept the default configuration and click **Create**.
 1.  Upload the HTML documents from the [Data/Discovery](../master/Data/Discovery) directory.
 1.  Under Collection info, click **Use this collection in API**. Copy and save the `Collection Id` and  `Environment Id` values.
