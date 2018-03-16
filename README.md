@@ -113,4 +113,4 @@ Try using your own data: Train a Visual Recognition classifier with your own ima
 [vizreq_with_coreml]: https://github.com/watson-developer-cloud/visual-recognition-coreml/
 [vizreq_tooling]: https://watson-visual-recognition.ng.bluemix.net/
 [xcode_download]: https://developer.apple.com/xcode/downloads/
-[watson_studio_visrec_tooling]: https://dataplatform.ibm.com/registration/stepone?context=wdp&target=watson_vision_combined&apps=data_science_experience
+[watson_studio_visrec_tooling]: https://dataplatform.ibm.com/registration/stepone?target=watson_vision_combined&context=wdp&apps=watson_studio
