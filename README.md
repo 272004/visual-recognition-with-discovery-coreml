@@ -72,7 +72,7 @@ To set up Discovery, upload the sample documents that have information about the
 
 1.  From the Discovery service overview page in the earlier step, click **Launch tool**.
 1.  Create a data collection and name it `Connectors`. Accept the default configuration and click **Create**.
-1.  Upload the HTML documents from the [Data/Discovery](../master/Data/Discovery) directory.
+1.  Upload the documents from the [Data/Discovery](../master/Data/Discovery) directory.
 1.  Under Collection info, click **Use this collection in API**. Copy and save the `Collection Id` and  `Environment Id` values.
 
 ## Configuring the app
