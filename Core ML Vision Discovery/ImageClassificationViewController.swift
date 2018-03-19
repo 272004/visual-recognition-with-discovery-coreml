@@ -53,10 +53,10 @@ class ImageClassificationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         // Pull down model if none on device
         let localModels = try? visualRecognition.listLocalModels()
-        if let models = localModels, !models.contains(self.visualRecognitionClassifierID)  {
-            self.invokeModelUpdate()
-        } else {
+        if let models = localModels, models.contains(self.visualRecognitionClassifierID)  {
             self.currentModelLabel.text = "Current Model: \(self.visualRecognitionClassifierID)"
+        } else {
+            self.invokeModelUpdate()
         }
     }
     
