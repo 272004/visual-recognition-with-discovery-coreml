@@ -65,7 +65,7 @@ If you have an existing instance of the Discovery service, you can use it. Other
 1.  Click **Add service** and add `Discovery`.
 1.  Select a plan and click **Create**. 
 1.  In your Discovery service overview page, click **Credentials**. If no credentials are available, click **New Credential** to create a new set of credentials.
-1.  Click **View Credentials** and copy and save the `username` and `password` values. You'll use them next in the Discovery Tool.
+1.  Click **View Credentials** and copy and save the `username` and `password` values. You'll use them next in the application.
 
 ### Configuring your Discovery service
 To set up Discovery, upload the sample documents that have information about the cables. The app queries your documents in the Discovery service and returns relevant information about the cable.
