@@ -17,7 +17,9 @@ Use GitHub to clone the repository locally, or download the .zip file of the rep
 
 ### Training the model
 1.  In Watson Studio on the Visual Recognition instance overview page, click **Create Model** in the Custom box.
-1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project 'Custom Core ML' and click the **Create**.
+1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project 'Custom Core ML' and click the **Create**. 
+
+    **Tip**: If no storage is defined, click **refresh**.
 1.  Upload each .zip file of sample images from the `Training Images` directory onto the data panel. Add the `hdmi_male.zip` file to your model by clicking the **Browse** button in the data panel. Also add the `usb_male.zip`, `thunderbolt_male.zip`, `vga_male.zip` file to your model.
 1.  Click **Train Model**.
 
@@ -65,7 +67,7 @@ If you have an existing instance of the Discovery service, you can use it. Other
 1.  Click **Add service** and add `Discovery`.
 1.  Select a plan and click **Create**. 
 1.  In your Discovery service overview page, click **Credentials**. If no credentials are available, click **New Credential** to create a new set of credentials.
-1.  Click **View Credentials** and copy and save the `username` and `password` values. You'll use them next in the Discovery Tool.
+1.  Click **View Credentials** and copy and save the `username` and `password` values. You'll use them next in the application.
 
 ### Configuring your Discovery service
 To set up Discovery, upload the sample documents that have information about the cables. The app queries your documents in the Discovery service and returns relevant information about the cable.
@@ -95,6 +97,8 @@ When you run the app, the SDK makes sure that the version of the Visual Recognit
 1. Pull new versions of the visual recognition model with the refresh button in the upper right.
 
     If you're online, the application queries the Discovery service and displays information about the classification results in the bottom panel.
+
+    **Tip:** The visual recognition classifier status must be `Ready` to use it. Check the classifier status in Watson Studio on the Visual Recognition instance overview page.
 
 ## What to do next
 
