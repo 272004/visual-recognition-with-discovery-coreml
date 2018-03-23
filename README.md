@@ -49,14 +49,6 @@ Use the Carthage dependency manager to download and build the Watson Swift SDK.
     carthage bootstrap --platform iOS
     ```
 
-### Importing the frameworks from the SDK
-
-1.  In the Watson Swift SDK, navigate to the Visual Recognition and Discovery frameworks in the `Carthage/Build/iOS` directory.
-1.  Drag `VisualRecognitionV3.framework` and `DiscoveryV1.framework` into XCode in your `projects` directory.
-1.  In Xcode, use the **Project Navigator** to select the `Core ML Vision Discovery.xcodeproj` project.
-1.  In the General settings tab, scroll down to **Embedded Binaries** and click the `+` icon.
-1.  Click **Add Other**, navigate to the `Carthage/Build/iOS` directory, and select both **VisualRecognitionV3.framework** and **DiscoveryV1.framework**.
-
 ## Setting up Discovery
 Next, you integrate Watson Discovery.
 
