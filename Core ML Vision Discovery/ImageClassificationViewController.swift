@@ -30,7 +30,9 @@ class ImageClassificationViewController: UIViewController {
     
     
     // Update these with your own Visual Recognition and discovery credentials
-    let visualRecognitionApiKey = ""
+    // Instantiation with `api_key` works only with Visual Recognition service instances created before May 23, 2018. Visual Recognition instances created after May 22 use the IAM `apikey`.
+    let apikey = ""     // The IAM apikey
+    let api_key = ""    // The apikey
     let visualRecognitionClassifierID = ""
     let discoveryUsername = ""
     let discoveryPassword = ""
@@ -45,9 +47,12 @@ class ImageClassificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.visualRecognition = VisualRecognition(apiKey: visualRecognitionApiKey, version: version)
+        if !api_key.isEmpty {
+            self.visualRecognition = VisualRecognition(apiKey: api_key, version: version)
+        } else if !apikey.isEmpty {
+            self.visualRecognition = VisualRecognition(version: version, apiKey: apikey)
+        }
         self.discovery = Discovery(username: discoveryUsername, password: discoveryPassword, version: version)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -172,20 +177,20 @@ class ImageClassificationViewController: UIViewController {
         
         let queryItem = query.components(separatedBy: " ")[0]
         let generalQuery = "text%3A%22" + queryItem + "%22"
-        self.discovery.queryDocumentsInCollection(
-            withEnvironmentID: discoveryEnvironmentID,
-            withCollectionID: discoveryCollectionID,
-            withQuery: generalQuery,
+        self.discovery.query(
+            environmentID: discoveryEnvironmentID,
+            collectionID: discoveryCollectionID,
+            query: generalQuery,
             failure: discoveryFail)
         {
             queryResponse in
-            if let results = queryResponse.results {
+            if let passages = queryResponse.passages {
                 DispatchQueue.main.async {
                     var text = ""
                     var sectionTitle = ""
                     var subTitle = ""
-                    if results.count > 0 {
-                        text = results[0].text ?? "No Discovery results found."
+                    if passages.count > 0 {
+                        text = passages[0].passageText ?? "No Discovery results found."
                         sectionTitle = "Description"
                         subTitle = query
                     } else {
