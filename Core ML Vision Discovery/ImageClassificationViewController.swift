@@ -184,20 +184,23 @@ class ImageClassificationViewController: UIViewController {
             failure: discoveryFail)
         {
             queryResponse in
-            if let passages = queryResponse.passages {
-                DispatchQueue.main.async {
-                    var text = ""
-                    var sectionTitle = ""
-                    var subTitle = ""
-                    if passages.count > 0 {
-                        text = passages[0].passageText ?? "No Discovery results found."
-                        sectionTitle = "Description"
-                        subTitle = query
-                    } else {
-                        text = "No Discovery results found."
-                    }
-                    self.displayDiscoveryResults(data: text, title: sectionTitle, subTitle: subTitle)
+
+            // display on main thread
+            DispatchQueue.main.async {
+                guard let results = queryResponse.results else {
+                    self.displayDiscoveryResults(data: "Unable to get results from Discovery response.", title: "", subTitle: "")
+                    return
                 }
+                if results.count == 0 {
+                    self.displayDiscoveryResults(data: "No Discovery results found.", title: "", subTitle: "")
+                    return
+                }
+                // parse from string:json dict
+                guard let textJson = results[0].additionalProperties["text"], case let .string(text) = textJson else {
+                    self.displayDiscoveryResults(data: "Unable to parse text from top result.", title: "", subTitle: "" )
+                    return
+                }
+                self.displayDiscoveryResults(data: text, title: "Description", subTitle: query)
             }
         }
     }
